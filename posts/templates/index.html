@@ -1,5 +1,8 @@
 <h1>Hello There</h1>
 
 {%for post in data%}
+<li>
     <a href = {% url 'post_details' id=post.id%}>{{post}}</a>
+    <a href = "/post_details"{{post.author.id }}">{{ post.author.name }}</a> -- {{ post.likes }} likes(s)!
+    </li>
 {% endfor %}

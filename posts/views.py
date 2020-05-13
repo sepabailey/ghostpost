@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, HttpResponseRedirect
 from posts.models import PostItem
+from posts.forms import AddPost
 
 
 def index(request):
@@ -21,3 +22,14 @@ def like_view(request, post_id):
     post = PostItem.objects.get(id=post_id)
     post.likes += 1
     post.save()
+    return HttpResponseRedirect(reverse('post_details', kwargs={'id': post_id}))
+
+
+def add_post(request):
+    html = "genericform.html"
+    form = AddPost()
+    if request.method == "POST":
+        form = AddPost(request.POST)
+        form.save()
+        return HttpResponseRedirect(reverse("homepage"))
+    return render(request, html, {"form": form})
