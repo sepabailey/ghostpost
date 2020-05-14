@@ -1,11 +1,11 @@
 <h1>Post Details:</h1>
 
 <h2>{{post.post_title}}</h2>
-<p>{{post.likes}} -- like(s)!</p>
+<p>{{post.results}} -- like(s)!</p>
 
 <p>
   <a href="/like/{{ post.id }}"><button>Boast!</button></a>
-  <a href="/like/{{ post.id }}"><button>Roast!</button></a>
+  <a href="/dislike/{{ post.id }}"><button>Roast!</button></a>
 </p>
 
 <br />
